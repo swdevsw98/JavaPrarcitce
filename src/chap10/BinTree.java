@@ -1,5 +1,7 @@
 package chap10;
 
+import java.util.Comparator;
+
 public class BinTree {
     static class Node<K,V> {
         private K key;
@@ -13,5 +15,21 @@ public class BinTree {
             this.left  = left;
             this.right = right;
         }
+
+        K getKey() {
+            return key;
+        }
+
+        V getValue() {
+            return data;
+        }
+
+        void print() {
+            System.out.println(data);
+        }
+
+        private Node<K,V> root;
+        private Comparator<? super K> comparator = null;
     }
+
 }
