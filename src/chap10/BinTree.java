@@ -145,5 +145,17 @@ public class BinTree<K, V> {
         }
         return  true;
     }
+
+    private void printSubTree(Node node) {
+        if(node != null) {
+            printSubTree(node.left);
+            System.out.println(node.key + " " + node.data);
+            printSubTree(node.right);
+        }
+    }
+
+    public void print() {
+        printSubTree(root);
+    }
 }
 
