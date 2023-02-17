@@ -25,4 +25,20 @@ public class ChainHash<K,V> {
             return key.hashCode();
         }
     }
+
+    private int size;
+    private Node<K,V>[] table;
+
+    public ChainHash(int capacity){
+        try{
+            table = new Node[capacity];
+            this.size = capacity;
+        } catch (OutOfMemoryError e) {
+            this.size = 0;
+        }
+    }
+
+    public int hashValue(Object key)  {
+        return key.hashCode() % size;
+    }
 }
