@@ -41,4 +41,30 @@ public class ChainHash<K,V> {
     public int hashValue(Object key)  {
         return key.hashCode() % size;
     }
+
+    public V search(K key) {
+        int hash = hashValue(key);
+        Node<K, V> p = table[hash];
+
+        while(p != null){
+            if (p.getKey().equals(key))
+                return p.getValue();
+            p = p.next;
+        }
+        return null;
+    }
+
+    public int add(K key, V data) {
+        int hash = hashValue(key);
+        Node<K, V> p = table[hash];
+
+        while(p != null) {
+            if(p.getKey().equals(key))
+                return 1;
+            p = p.next;
+        }
+        Node<K, V> temp = new Node<K, V>(key, data, table[hash]);
+        table[hash] = temp;
+        return 0;
+    }
 }
